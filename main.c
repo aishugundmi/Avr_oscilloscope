@@ -10,7 +10,7 @@
 
 
 uint16_t adc_value;
-
+uint8_t ser[3];
 
 void adc_init(void);
 uint16_t read_adc(uint8_t channel);
@@ -21,7 +21,8 @@ void USART_putstring(char* StringPtr);
 
 void adc_init(void)
 {
-    ADCSRA |= ((1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0));    //16Mhz/128 = 125Khz
+   // ADCSRA |= ((1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0));    //16Mhz/128 = 125Khz
+    ADCSRA |= ((1<<ADPS2)|(1<<ADPS1));    //16Mhz/64
     ADMUX |= (1<<REFS0);                //Voltage reference from Avcc (5v)
     ADCSRA |= (1<<ADEN);                //Turn on ADC
 }
@@ -48,9 +49,17 @@ int main(void)
 
             char print_buf1[40];
             sprintf(print_buf1, "Analog value=%d\n", adc_value);
-            USART_putstring(print_buf1);
+        //    USART_putstring(print_buf1);
 
-            _delay_ms(500);
+            ser[0]=0xF7;
+
+            ser[1]=((uint16_t)adc_value) >> 8;     // high byte
+			ser[2]=((uint16_t)adc_value) & 0x00FF; // low byte
+
+			USART_send(ser[0]);
+			USART_send(ser[1]);
+			USART_send(ser[2]);
+
     }
     return 0;
 }
