@@ -10,7 +10,6 @@
 
 
 uint16_t adc_value;
-char buffer[5];                //Output of the itoa function
 
 
 void adc_init(void);
