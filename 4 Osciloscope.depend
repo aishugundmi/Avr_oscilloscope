@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1597474526 source:c:\users\aishwarya\desktop\avr_code\4 osciloscope\fuse.c
+	<avr/io.h>
+
+1597482930 source:c:\users\aishwarya\desktop\avr_code\4 osciloscope\main.c
+	<avr/io.h>
+	<util/delay.h>
+	<stdio.h>
+	<stdint.h>
+
