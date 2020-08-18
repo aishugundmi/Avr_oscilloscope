@@ -2,9 +2,10 @@
 1597474526 source:c:\users\aishwarya\desktop\avr_code\4 osciloscope\fuse.c
 	<avr/io.h>
 
-1597482930 source:c:\users\aishwarya\desktop\avr_code\4 osciloscope\main.c
+1597642711 source:c:\users\aishwarya\desktop\avr_code\4 osciloscope\main.c
 	<avr/io.h>
 	<util/delay.h>
+	<avr/interrupt.h>
 	<stdio.h>
 	<stdint.h>
 
